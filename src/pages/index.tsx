@@ -5,11 +5,11 @@ export default function Home() {
   const { data: session } = useSession();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-6 px-4 text-center">
-      <h1 className="text-4xl font-bold">DevTrackr</h1>
+    <main className="flex flex-col items-center justify-center gap-6 text-center w-full h-screen bg-transparent">
+      <div className="bg-white bg-opacity-90 backdrop-blur-sm p-10 rounded-2xl shadow-2xl w-full max-w-md text-center space-y-6">
+        <h1 className="text-4xl font-bold text-gray-900">DevTrackr</h1>
 
-      {session ? (
-        <>
+        {session ? (
           <div className="flex flex-col items-center gap-4">
             <motion.img
               src={session.user?.image ?? ""}
@@ -21,7 +21,7 @@ export default function Home() {
             />
 
             <motion.p
-              className="text-lg"
+              className="text-lg text-gray-800"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
             >
@@ -32,32 +32,32 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => signOut()}
-              className="px-4 py-2 bg-red-500 text-white rounded shadow"
+              className="px-4 py-2 bg-red-500 text-white rounded shadow hover:bg-red-600 transition"
             >
               Sign out
             </motion.button>
           </div>
-        </>
-      ) : (
-        <>
-          <motion.p
-            className="text-lg"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
-            You are not signed in.
-          </motion.p>
+        ) : (
+          <div className="space-y-4">
+            <motion.p
+              className="text-lg text-gray-700"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              You are not signed in.
+            </motion.p>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => signIn("github")}
-            className="px-4 py-2 bg-blue-600 text-white rounded shadow"
-          >
-            Sign in with GitHub
-          </motion.button>
-        </>
-      )}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => signIn("github")}
+              className="w-full px-4 py-2 bg-black text-white rounded shadow hover:bg-gray-800 transition"
+            >
+              Sign in with GitHub
+            </motion.button>
+          </div>
+        )}
+      </div>
     </main>
   );
 }

@@ -13,9 +13,9 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",                         // ✅ Root of project
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]                      // ✅ @/ resolves to src/*
+      "@/*": ["src/*"]
     },
     "plugins": [
       {
